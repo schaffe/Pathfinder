@@ -1,0 +1,8 @@
+.bttn {
+  width: 100px;
+  border: 1px solid green;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
