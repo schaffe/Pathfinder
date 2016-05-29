@@ -1,0 +1,10 @@
+<nav class="mdl-navigation">
+  <!--<span *ngIf="!isCurrUser()">-->
+    <a *ngIf="!isCurrUser()" class="mdl-navigation__link" [routerLink]=" ['/Register'] ">Приєднатись</a>
+    <a *ngIf="!isCurrUser()" class="mdl-navigation__link" [routerLink]=" ['/Login'] ">Увійти</a>
+  <!--</span>-->
+  <!--<span *ngIf="isCurrUser()">-->
+    <a *ngIf="isCurrUser()" class="mdl-navigation__link" href="#">Профіль</a>
+    <a *ngIf="isCurrUser()" class="mdl-navigation__link" href="#" (click)="logout()">Вийти</a>
+  <!--</span>-->
+</nav>
