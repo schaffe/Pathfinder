@@ -6,18 +6,19 @@ import {FullPlace} from "./components/fullPlace/fullPlace";
 import {NewPlace} from "./components/newPlace/newPlace";
 import {PlaceService} from "./services/placeService";
 import {LikeService} from "./services/likeService";
+import {MapData} from "./services/mapData";
 import {MapService} from "./services/mapService";
 import {Register} from "./components/auth/register/register";
 import {Login} from "./components/auth/login/login";
 import {Auth} from "./components/auth/auth";
-//import {Logout} from './components/auth/logout/logout';
-
+import {Profile} from "./components/profile/profile";
 import {Map} from './components/map/map';
+
 
 @Component({
   selector: 'seed-app',
   providers: [
-    PlaceService, LikeService, MapService
+    PlaceService, LikeService, MapData, MapService
   ],
   pipes: [],
   directives: [ROUTER_DIRECTIVES, Auth, Map],
@@ -31,7 +32,8 @@ import {Map} from './components/map/map';
   { path: 'places/add', component: NewPlace,     name: 'NewPlace' },
   { path: 'register', component: Register, name: 'Register' },
   { path: 'login', component: Login, name: 'Login' },
-  { path: 'map', component: Map, name: 'Map'}
+  { path: 'map', component: Map, name: 'Map'},
+  { path: 'profile', component: Profile, name: 'Profile'}
 ])
 export class SeedApp {
   constructor() {}

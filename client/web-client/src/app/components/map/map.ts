@@ -2,7 +2,7 @@
  * Created by bubble on 26.05.16.
  */
 import {Component, OnInit, ViewEncapsulation} from 'angular2/core';
-import {MapService} from '../../services/mapService';
+import {MapData} from '../../services/mapData';
 const L = require('leaflet');
 // import * as markerCluster from 'leaflet.markercluster';
 var geojson, map, info;
@@ -40,7 +40,7 @@ function resetHighlight(e) {
 })
 export class Map implements OnInit {
 
-  constructor(private _mapService:MapService) {
+  constructor(private _mapService:MapData) {
   }
 
   ngOnInit() {
@@ -91,8 +91,8 @@ export class Map implements OnInit {
     L.Mask = L.Polygon.extend({
       options: {
         stroke: false,
-        color: '#1b3716',// 'white',//'rgb(152,152,152)',//'#1b3716',
-        fillOpacity:/* 1,*/ 0.8,
+        color: '#1b3716',// ,//'rgb(152,152,152)',//'#1b3716',
+        fillOpacity: 0.5,//0.2,
         clickable: false,
         outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
       },
@@ -155,7 +155,43 @@ export class Map implements OnInit {
   addMarkers() {
     // map.addLayer(markers);
     var marker = L.marker([50.45, 30.52]).addTo(map);
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    marker.bindPopup("<b>Київ</b><br>Ки́їв (МФА: Аудіо [ˈkɪjiw]опис файлу) — столиця України, місто-герой, одне з найбільших і найстаріших міст Європи. Розташований у середній течії Дніпра, у північній Наддніпрянщині. Політичний, соціально-економічний, транспортний та освітньо-науковий центр країни. Окрема адміністративно-територіальна одиниця у складі України і адміністративний центр Київської області. Районний центр Києво-Святошинського району. Адміністративно до складу Київської області не входить.");
+    //
+    // var marker = L.marker([50.201078, 26.488037]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([48.860649, 24.598389]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([49.220737,28.553467]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([48.220555, 29.937744]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([48.497953, 32.222900]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([47.185513, 31.475830]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([47.853256, 33.475342]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([46.795829, 34.903564]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([46.855965,36.683350]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([47.853256, 35.255127]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([49.048220, 33.541260]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
+    //
+    // var marker = L.marker([50.621152, 32.750244]).addTo(map);
+    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
   }
 
 }

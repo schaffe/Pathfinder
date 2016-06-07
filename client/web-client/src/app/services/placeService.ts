@@ -2,13 +2,12 @@
  * Created by bubble on 25.04.16.
  */
 
-//todo CRUD Place
-
 import {Injectable} from "angular2/core";
 import {Http, Response, Headers, RequestOptions} from "angular2/http";
 import {Observable} from "rxjs/Observable";
 import "rxjs/Rx";
 import {Place} from "../components/entities/place";
+import {Likes} from "../components/entities/like";
 const Backendless = require('backendless');
 
 //var ListPlace: Place[] = [
@@ -70,4 +69,21 @@ export class PlaceService {
     return Backendless.Data.of(Place).save(place);
   }
 
+  getCreatedPlaceByUser(user: Backendless.User) {
+    var user = user;
+    var query = new Backendless.DataQuery();
+    return Backendless.UserService.getCurrentUser()
+        .then(res=> user=user||res)
+        .then(()=>query.condition = "ownerId='" + user.objectId + "'")
+        .then(()=>Backendless.Data.of(Place).find(query));
+  }
+
+  getLikedPlaceOfUser(user: Backendless.User) {
+    var user = user;
+    var query = new Backendless.DataQuery();
+    return Backendless.UserService.getCurrentUser()
+        .then(res=> user=user||res)
+        .then(()=>query.condition = "user.objectId='" + user.objectId + "'")
+        .then(()=>Backendless.Data.of(Likes).find(query));
+  }
 }

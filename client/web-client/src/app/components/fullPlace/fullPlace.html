@@ -1,19 +1,45 @@
 <!--<div>-->
-  <!--<input type="text" value="{{place?.name}}" readonly id="name">-->
-  <!--<span (click)="editTitle()" id="editTitle" class="button saved"></span>-->
-  <!--<br>-->
-  <!--<textarea id="description" rows="4" cols="50" readonly>{{place?.description}}</textarea>-->
-  <!--<span id="editDescription" (click)="editDescription()" class="button saved"></span>-->
-  <!--<div class="button like" (click)="like()"> ♥ {{place?.likes}} </div>-->
+  <!--<h2>{{place?.name}}</h2> <input type="text" #editTitle placeholder="New name">-->
+  <!--<p>{{place?.description}}</p> <textarea name="descriptionPlaceEdit" #editDescription cols="30" rows="1"></textarea>-->
+    <!--<all-tags [tags]="tags" [place]="place"></all-tags>-->
+    <!--&lt;!&ndash;<tag *ngFor="#tag of tags" [tag]="tag" [place]="place"></tag>&ndash;&gt;-->
   <!--<div class="button delete" (click)="delete()">X Delete</div>-->
+  <!--<div class="button edit" (click)="edit(editTitle.value, editDescription.value)">Edit Place</div>-->
+  <!--<div id="little_map" style="width: 300px; height: 300px;"></div>-->
 <!--</div>-->
 
-<div>
-  <h2>{{place?.name}}</h2> <input type="text" #editTitle placeholder="New name">
-  <p>{{place?.description}}</p> <textarea name="descriptionPlaceEdit" #editDescription cols="30" rows="1"></textarea>
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2 class="page-header">{{place?.name}}</h2>
+  </div>
+  <div class="col-md-6">
+    <p>{{place?.description}}</p>
     <all-tags [tags]="tags" [place]="place"></all-tags>
-    <!--<tag *ngFor="#tag of tags" [tag]="tag" [place]="place"></tag>-->
-  <div class="button delete" (click)="delete()">X Delete</div>
-  <div class="button edit" (click)="edit(editTitle.value, editDescription.value)">Edit Place</div>
-  <div id="little_map" style="width: 300px; height: 300px;"></div>
+  </div>
+  <div class="col-md-6">
+    <div id="little_map" style="width: 700px; height: 450px;"></div>
+  </div>
 </div>
+
+
+<!--New place-->
+
+<!--<div class="row">-->
+  <!--<div class="col-lg-12">-->
+    <!--<h2 class="page-header">Введіть нову назву<input type="text" #editTitle placeholder="Ковель"></h2>-->
+  <!--</div>-->
+  <!--<div class="col-md-6">-->
+    <!--<p>Введіть новий опис</p><textarea name="descriptionPlaceEdit" #editDescription cols="70" rows="5">-->
+
+<!--Ко́вель — місто обласного значення у Волинській області, райцентр Ковельського району. Розташований за 70 км від обласного центру — Луцька, за 65 км від автопереходу Ягодин-Дорогуськ та за 69 км від автопереходу «Доманове». У 2008[2] та 2011[3] році Ковель перемагав у всеукраїнському конкурсі «Населений пункт найкращого благоустрою і підтримки громадського порядку» серед міст з населенням до 100 тисяч мешканців.-->
+  <!--</textarea>-->
+    <!--&lt;!&ndash;<all-tags [tags]="tags" [place]="place"></all-tags>&ndash;&gt;<br><br>-->
+    <!--<button class="mdl-button mdl-js-button mdl-button&#45;&#45;raised mdl-button&#45;&#45;colored">-->
+      <!--ЗБЕРЕГТИ-->
+    <!--</button>-->
+  <!--</div>-->
+  <!--<div class="col-md-6">-->
+    <!--<div id="little_map" style="width: 700px; height: 450px;"></div>-->
+  <!--</div>-->
+<!--</div>-->

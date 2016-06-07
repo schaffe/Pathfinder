@@ -13,7 +13,8 @@ const Backendless = require('backendless');
 @Component({
   selector: 'places',
   templateUrl: 'app/components/allPlaces/allPlaces.html',
-  directives: [PlaceDetail]
+  directives: [PlaceDetail],
+  styleUrls: ['app/components/allPlaces/allPlaces.css']
 })
 export class Places implements OnInit{
   places : Place[];
@@ -28,7 +29,7 @@ export class Places implements OnInit{
   }
 
   getPlaces(){
-    this._placeService.getPlaces().then( res => this.places = res.data );
+    this._placeService.getPlaces().then( res => this.places = res.data.slice(0,11) );
   }
 
   addNewPlace(){

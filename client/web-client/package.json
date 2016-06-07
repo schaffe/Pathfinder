@@ -1,7 +1,7 @@
 {
-  "name": "angular2-seed",
+  "name": "Places",
   "version": "1.0.0",
-  "description": "A simple starter Angular2 project",
+  "description": "recommend system for travellers of Ukraine",
   "scripts": {
     "typings-install": "node node_modules/typings/dist/bin.js install",
     "postinstall": "npm run typings-install",
@@ -11,8 +11,7 @@
     "start": "npm run server"
   },
   "contributors": [
-    "Rob Wormald <robwormald@gmail.com>",
-    "PatrickJS <github@gdi2290.com>"
+    "Yuliaa Hryhorieva <julia.hrihorieva@gmail.com>"
   ],
   "license": "MIT",
   "devDependencies": {
@@ -28,14 +27,13 @@
     "webpack-merge": "^0.8.4"
   },
   "dependencies": {
-    "@angular2-material/checkbox": "^2.0.0-alpha.4",
-    "@angular2-material/core": "^2.0.0-alpha.4",
     "angular2": "2.0.0-beta.15",
     "backendless": ">=3.1.0",
     "core-js": "^2.2.0",
     "d3": "^3.5.17",
     "lodash": "^4.12.0",
     "mapbox.js": "^2.4.0",
+    "leaflet": "^0.7.7",
     "moment": "^2.13.0",
     "rxjs": "5.0.0-beta.2",
     "zone.js": "~0.6.11"
@@ -44,14 +42,8 @@
     "Angular2",
     "angular2-seed",
     "official angular 2 seed",
-    "official angular2 seed"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/angular/angular2-seed.git"
-  },
-  "bugs": {
-    "url": "https://github.com/angular/angular2-seed/issues"
-  },
-  "homepage": "https://github.com/angular/angular2-seed#readme"
+    "official angular2 seed",
+    "bachelours project",
+    "leaflet"
+  ]
 }

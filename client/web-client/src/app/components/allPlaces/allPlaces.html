@@ -3,6 +3,9 @@
   <div class="mdl-grid">
 
     <div class="demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
+      <div class="mdl-card__title">
+
+      </div>
       <div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-ripple-effect" (click)="addNewPlace()">
           Додати нове місце
@@ -10,15 +13,28 @@
       </div>
     </div>
     <place-detail  *ngFor="#place of places" [place]="place" class="demo-card-wide mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col"></place-detail>
-    <!--<ul>-->
-      <!--&lt;!&ndash;<span (click)="addNewPlace()">Add new place</span>&ndash;&gt;-->
-      <!--<li *ngFor="#place of places">-->
-        <!--&lt;!&ndash; each place goes here&ndash;&gt;-->
-        <!--<place-detail [place]=place (click)="gotoDetail(place)"></place-detail>-->
-      <!--</li>-->
-    <!--</ul>-->
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+      ДИВИТИСЬ ЩЕ
+    </button>
   </div>
 </div>
+
+
+<!--Профіль-->
+
+<!--<h3>Створені місця</h3>-->
+<!--<div class="container">-->
+  <!--Ви ще не додавали місць на загальну мапу України-->
+<!--</div>-->
+
+<!--<h3>Вподобані місця</h3>-->
+<!--<div class="container">-->
+  <!--<div class="mdl-grid">-->
+    <!--<place-detail  *ngFor="#place of places" [place]="place" class="demo-card-wide mdl-card mdl-shadow&#45;&#45;2dp mdl-cell mdl-cell&#45;&#45;4-col"></place-detail>-->
+  <!--</div>-->
+<!--</div>-->
+
+
 
 
 <!--<ol>-->

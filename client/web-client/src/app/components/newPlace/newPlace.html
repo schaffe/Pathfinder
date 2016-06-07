@@ -1,3 +1,18 @@
-<input type="text" id="title" placeholder="Input title"/>
-<input type="text" id="description" placeholder="Input description"/>
-<div class="bttn" (click)="create()">Create!</div>
+<!--<input type="text" id="title" placeholder="Input title"/>-->
+<!--<input type="text" id="description" placeholder="Input description"/>-->
+<!--<div class="bttn" (click)="create()">Create!</div>-->
+
+<!--New place-->
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header"><input type="text" id="title" placeholder="Назва"></h2>
+    </div>
+    <div class="col-md-6">
+        <p>Введіть новий опис</p><textarea name="descriptionPlaceEdit" id="description" cols="70" rows="5"></textarea>
+        <div class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="create()">Створити</div>
+    </div>
+    <div class="col-md-6">
+        <div id="little_map" style="width: 700px; height: 450px;"></div>
+    </div>
+</div>

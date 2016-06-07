@@ -28,7 +28,6 @@ var webpackConfig = {
 
 };
 
-
 // Our Webpack Defaults
 var defaultConfig = {
   devtool: 'cheap-module-eval-source-map',
