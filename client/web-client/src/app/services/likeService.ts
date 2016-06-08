@@ -29,13 +29,13 @@ export class LikeService {
   getDisplayTag(place:Place, tag: Tag) {
     let query = new Backendless.DataQuery();
     query.condition = "place.objectId='" + place.objectId + "' and tag.objectId='" + tag.objectId + "'";
-    return Backendless.Persistence.of(Likes).find(query);
-      // .then(res=>{
-      //   let dispTag = new DisplayTag(tag, res.totalObjects);
-      //   console.log("getDisplayTag:");
-      //   console.log(dispTag);
-      //   return dispTag;
-      // });
+    return Backendless.Persistence.of(Likes).find(query)
+      .then(res=>{
+        let dispTag = new DisplayTag(tag, res.totalObjects);
+        console.log("getDisplayTag:");
+        console.log(dispTag);
+        return dispTag;
+      });
   }
 
   getLikedTags(placeID:string) {
@@ -94,8 +94,9 @@ export class LikeService {
       .then( tag=> {
         console.log("created tag:");
         console.log(tag);
-        this.addLike(place, tag)});
+        return this.addLike(place, tag)});
   }
+    
 
 }
 

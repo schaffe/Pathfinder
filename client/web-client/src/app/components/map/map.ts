@@ -3,8 +3,10 @@
  */
 import {Component, OnInit, ViewEncapsulation} from 'angular2/core';
 import {MapData} from '../../services/mapData';
+import {PlaceService} from "../../services/placeService";
+import {Place} from "../entities/place";
+import {Router} from "angular2/router";
 const L = require('leaflet');
-// import * as markerCluster from 'leaflet.markercluster';
 var geojson, map, info;
 
 function highlightFeature(e) {
@@ -39,13 +41,16 @@ function resetHighlight(e) {
   encapsulation: ViewEncapsulation.None
 })
 export class Map implements OnInit {
-
-  constructor(private _mapService:MapData) {
+  places: Place[];
+  constructor(private _mapService:MapData,
+              private _placeService:PlaceService) {
   }
 
   ngOnInit() {
     this.displayMap();
-    this.addMarkers();
+    this._placeService.getPlaces()
+        .then(res=>this.places=res.data)
+        .then(()=>this.addMarkers());
   }
 
   displayMap() {
@@ -63,11 +68,11 @@ export class Map implements OnInit {
     });
 
     L.tileLayer(
-      'https://api.mapbox.com/styles/v1/kastrulya/ciopmkl6g0052i8nmlnjw6iww/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2FzdHJ1bHlhIiwiYSI6ImNpb3Bsdm92dTAwMDJ2bG0xenEwZmJlYm4ifQ.nsPNZQ726nMQtszDGhDX3w',
-      {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        accessToken: 'pk.eyJ1Ijoia2FzdHJ1bHlhIiwiYSI6ImNpb3Bsdm92dTAwMDJ2bG0xenEwZmJlYm4ifQ.nsPNZQ726nMQtszDGhDX3w'
-    }).addTo(map);
+        'https://api.mapbox.com/styles/v1/kastrulya/ciopmkl6g0052i8nmlnjw6iww/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2FzdHJ1bHlhIiwiYSI6ImNpb3Bsdm92dTAwMDJ2bG0xenEwZmJlYm4ifQ.nsPNZQ726nMQtszDGhDX3w',
+        {
+          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+          accessToken: 'pk.eyJ1Ijoia2FzdHJ1bHlhIiwiYSI6ImNpb3Bsdm92dTAwMDJ2bG0xenEwZmJlYm4ifQ.nsPNZQ726nMQtszDGhDX3w'
+        }).addTo(map);
 
     this.createMask();
     this.createDistricts();
@@ -145,17 +150,29 @@ export class Map implements OnInit {
 // method that we will use to update the control based on feature properties passed
     info.update = function (props) {
       this._div.innerHTML = '<h4>Область</h4>' + (props ?
-        '<b>' + props.name + '</b>'
-          : 'Оберіть область');
+          '<b>' + props.name + '</b>'
+              : 'Оберіть область');
     };
 
     info.addTo(map);
   }
 
+  getMarkerDescription(place){
+    let link = ['FullPlace', {objId: place.objectId}];
+    return "<b>" + place.name + "</b><br>" + place.description;
+  }
+
   addMarkers() {
     // map.addLayer(markers);
-    var marker = L.marker([50.45, 30.52]).addTo(map);
-    marker.bindPopup("<b>Київ</b><br>Ки́їв (МФА: Аудіо [ˈkɪjiw]опис файлу) — столиця України, місто-герой, одне з найбільших і найстаріших міст Європи. Розташований у середній течії Дніпра, у північній Наддніпрянщині. Політичний, соціально-економічний, транспортний та освітньо-науковий центр країни. Окрема адміністративно-територіальна одиниця у складі України і адміністративний центр Київської області. Районний центр Києво-Святошинського району. Адміністративно до складу Київської області не входить.");
+    this.places.forEach(place=>{
+      var marker = L.marker([place.location.latitude, place.location.longitude]);
+      marker.bindPopup(this.getMarkerDescription(place));
+      marker.addTo(map);
+    });
+
+    // var marker = L.marker([50.45, 30.52]).addTo(map);
+    // marker.bindPopup("<b>Київ</b><br>Ки́їв (МФА: Аудіо [ˈkɪjiw]опис файлу) — столиця України, місто-герой, одне з найбільших і найстаріших міст Європи. Розташований у середній течії Дніпра, у північній Наддніпрянщині. Політичний, соціально-економічний, транспортний та освітньо-науковий центр країни. Окрема адміністративно-територіальна одиниця у складі України і адміністративний центр Київської області. Районний центр Києво-Святошинського району. Адміністративно до складу Київської області не входить.");
+    //
     //
     // var marker = L.marker([50.201078, 26.488037]).addTo(map);
     // marker.bindPopup("<b>Hello world!</b><br>I am a popup.");

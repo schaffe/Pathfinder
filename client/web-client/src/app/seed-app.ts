@@ -13,15 +13,17 @@ import {Login} from "./components/auth/login/login";
 import {Auth} from "./components/auth/auth";
 import {Profile} from "./components/profile/profile";
 import {Map} from './components/map/map';
+import {Searching} from "./components/searching/searching";
+import {SearchService} from "./services/searchService";
 
 
 @Component({
   selector: 'seed-app',
   providers: [
-    PlaceService, LikeService, MapData, MapService
+    PlaceService, LikeService, MapData, MapService, SearchService
   ],
   pipes: [],
-  directives: [ROUTER_DIRECTIVES, Auth, Map],
+  directives: [ROUTER_DIRECTIVES, Auth, Map, Searching],
   templateUrl: 'app/seed-app.html',
   styleUrls: ['app/seed-app.css']
 })

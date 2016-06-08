@@ -23,12 +23,12 @@ export class NewPlace implements OnInit {
     }
 
     ngOnInit() {
-        // this.initMap();
         var map = L.map("little_map", this._mapService.mapOptions);
         this._mapService.map = map;
         this._mapService.addLayer();
         var popup = L.popup();
-        this._mapService.map.on('click' , (event: MouseEvent)=> {
+        //noinspection TypeScriptUnresolvedFunction
+        this._mapService.map.on('click' , (event)=> {
             popup
                         .setLatLng(event.latlng)
                         .setContent("Новий об’єкт розташований за такими координатами: " + event.latlng.toString())
@@ -44,8 +44,8 @@ export class NewPlace implements OnInit {
         place.location = new Backendless.GeoPoint();
         place.location.latitude = this._mapService.markerLocation.lat;
         place.location.longitude = this._mapService.markerLocation.lng;
-        this._placeService.createPlace(place).then();
-        let link = ['Places'];
-        this._router.navigate(link);
+        this._placeService.createPlace(place).then(()=>this._router.navigate(['Places']));
+        // let link = ['Places'];
+        // this._router.navigate(link);
     }
 }

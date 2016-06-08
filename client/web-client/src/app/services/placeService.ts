@@ -50,7 +50,9 @@ export class PlaceService {
   }
 
   getPlaces() {
-    return Backendless.Data.of(Place).find();
+    var query = new Backendless.DataQuery();
+    query.options = { relations: ["location"] };
+    return Backendless.Data.of(Place).find(query);
   }
 
   getPlace(objId: string) : Promise<Place> {
