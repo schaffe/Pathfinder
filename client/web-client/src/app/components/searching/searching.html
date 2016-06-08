@@ -1,0 +1,6 @@
+<i class="material-icons">search</i>
+
+<input type="text" placeholder="Search..." #term (keyup)="search(term.value)" list="dl_terms"/>
+<datalist id="dl_terms">
+    <option #option *ngFor="#item of items" label={{item.name}} value={{item.name}} >
+</datalist>

@@ -1,0 +1,14 @@
+.material-icons {
+    /*font-size: 18px;*/
+    top: 6px;
+    position: relative;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+}
